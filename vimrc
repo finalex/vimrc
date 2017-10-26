@@ -17,19 +17,31 @@ Plugin 'VundleVim/Vundle.vim'
 
 "" plugin on GitHub repo
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'nachumk/systemverilog.vim'
+"Plugin 'nachumk/systemverilog.vim'
+Plugin 'WeiChungWu/vim-SystemVerilog'
 Plugin 'godlygeek/tabular'
-Plugin 'kien/ctrlp.vim'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'junegunn/vim-easy-align'
-Plugin 'vim-scripts/VisIncr'
-"Plugin 'vim-scripts/taglist.vim'
-"Plugin 'lifepillar/vim-mucomplete'
+Plugin 'vim-scripts/VisIncr'  
 Plugin 'tsaleh/vim-align'
 Plugin 'scrooloose/nerdtree'
-Plugin 'davidhalter/jedi-vim'
 Plugin 'Yggdroot/LeaderF'
+Plugin 'lifepillar/vim-mucomplete'
+
+"python
+Plugin 'davidhalter/jedi-vim'
+"vim-snipmate start -- conflict with YCM
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+" Optional:
+Plugin 'honza/vim-snippets'
+"vim-snipmate end
+
+"Plugin 'vim-scripts/taglist.vim'
+"Plugin 'kien/ctrlp.vim'
+"Plugin 'Valloric/YouCompleteMe'
+
 "" plugin from http://vim-scripts.org/vim/scripts.html
 "" Plugin 'L9'
 Plugin 'L9'
@@ -145,9 +157,11 @@ let mapleader=','
 
 "vim
 nnoremap <silent> <leader>h :silent nohl<CR><ESC>
-nnoremap <leader>y "+y
-nnoremap <leader>p "+p
-nnoremap <leader>P "+P
+
+noremap <leader>y "+y
+noremap <leader>p "+p
+noremap <leader>P "+P
+
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 "comment
 nnoremap <leader>bc <ESC><ESC>O//====================================================================================================<ESC><ESC>j^
@@ -158,10 +172,10 @@ nnoremap <leader>ic <ESC><ESC>^i//<ESC><ESC>
 "plugin conf
 
 "tabular
-vnoremap <leader>t* :Tabularize /\(input\\|output\\|reg\\|wire\)\zs\s<CR><ESC>
+au BufNewFile,BufRead *.v,*.vh,*.sv,*.svh vnoremap <leader>t* :Tabularize /\(input\\|output\\|reg\\|wire\)\zs\s<CR><ESC>
 
 "NERDTreeToggle
-noremap <F10> :NERDTreeToggle<CR>
+noremap <leader>s :NERDTreeToggle<CR>
 
 "cyx_defined
 "au BufNewFile,BufRead *.v,*.sv nnoremap <silent> <F1> :VerilogLineFormat<CR>
