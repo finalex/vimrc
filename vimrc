@@ -27,7 +27,7 @@ Plugin 'tsaleh/vim-align'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Yggdroot/LeaderF'
 Plugin 'lifepillar/vim-mucomplete'
-
+Plugin 'compnerd/arm64asm-vim'
 "python
 Plugin 'davidhalter/jedi-vim'
 "vim-snipmate start -- conflict with YCM
@@ -171,11 +171,19 @@ nnoremap <leader>ic <ESC><ESC>^i//<ESC><ESC>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "plugin conf
 
+"mucomplete
+imap <c-k> <plug>(MUcompleteFwd)
+imap <c-q> <plug>(MUcompleteBwd)
+
 "tabular
 au BufNewFile,BufRead *.v,*.vh,*.sv,*.svh vnoremap <leader>t* :Tabularize /\(input\\|output\\|reg\\|wire\)\zs\s<CR><ESC>
 
 "NERDTreeToggle
 noremap <leader>s :NERDTreeToggle<CR>
+
+"vim-easy-align
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 "cyx_defined
 "au BufNewFile,BufRead *.v,*.sv nnoremap <silent> <F1> :VerilogLineFormat<CR>
