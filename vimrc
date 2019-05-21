@@ -29,8 +29,10 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'Yggdroot/LeaderF'
 Plugin 'lifepillar/vim-mucomplete'
 Plugin 'compnerd/arm64asm-vim'
+Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/nerdcommenter'
 "python
-Plugin 'davidhalter/jedi-vim'
+" Plugin 'davidhalter/jedi-vim'
 "vim-snipmate start -- conflict with YCM
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
@@ -38,9 +40,12 @@ Plugin 'garbas/vim-snipmate'
 " Optional:
 Plugin 'honza/vim-snippets'
 "vim-snipmate end
+" cyx
+Plugin 'finalex/vim_sv_helper'
+
 
 "Plugin 'vim-scripts/taglist.vim'
-"Plugin 'kien/ctrlp.vim'
+Plugin 'kien/ctrlp.vim'
 "Plugin 'Valloric/YouCompleteMe'
 
 "" plugin from http://vim-scripts.org/vim/scripts.html
@@ -120,7 +125,9 @@ set noundofile
 set noswapfile
 set encoding=utf8
 
+" //====================================================================================================
 "ui conf
+
 if has('gui_running')
     colo solarized
     "set background=light
@@ -139,14 +146,17 @@ endif
 if has('win32')
     set guifont=Source\ Code\ Pro:h10
 else
-    set guifont=Source\ Code\ Pro\ 10
+     set guifont=DejaVu\ Sans\ Mono\ 10
 endif
+
+" //====================================================================================================
 
 set nu
 set nowrap
 syntax on
 set hlsearch
-
+set incsearch
+set textwidth=200
 "tab conf
 set expandtab
 set tabstop=4
@@ -164,6 +174,10 @@ noremap <leader>p "+p
 noremap <leader>P "+P
 
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+
+"Search
+map <F4> [I:let nr = input("Input No. to jump:")<Bar>exe "normal " . nr ."[\t"<CR>
+map <F3> :exec 'lvimgrep /'.expand('<cword>').'/ % <Bar> lopen'<CR>
 "comment
 nnoremap <leader>bc <ESC><ESC>O//====================================================================================================<ESC><ESC>j^
 nnoremap <leader>ac <ESC><ESC>o//====================================================================================================<ESC><ESC>k^
@@ -176,8 +190,10 @@ nnoremap <leader>ic <ESC><ESC>^i//<ESC><ESC>
 imap <c-k> <plug>(MUcompleteFwd)
 imap <c-q> <plug>(MUcompleteBwd)
 
-"tabular
-au BufNewFile,BufRead *.v,*.vh,*.sv,*.svh vnoremap <leader>t* :Tabularize /\(input\\|output\\|reg\\|wire\)\zs\s<CR><ESC>
+"tabular -- take care : need two \\
+au BufNewFile,BufRead *.v,*.vh,*.sv,*.svh vnoremap <leader>tp :Tabularize /\(input\\|output\)\s*\(\[.*\]\)\?<CR><ESC>
+au BufNewFile,BufRead *.v,*.vh,*.sv,*.svh vnoremap <leader>tw :Tabularize /\(logic\\|wire\\|reg\)\s*\(\[.*\]\)\?<CR><ESC>
+au BufNewFile,BufRead *.v,*.vh,*.sv,*.svh vnoremap <leader>ti :Tabularize /\(\.\w\+\zs\\|)\s*,\?\s*$\)<CR><ESC>
 
 "NERDTreeToggle
 noremap <leader>s :NERDTreeToggle<CR>
@@ -186,11 +202,25 @@ noremap <leader>s :NERDTreeToggle<CR>
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
+"Nerdcommenter
+"Add one space to comment
+let g:NERDSpaceDelims=1
+
 "cyx_defined
 "au BufNewFile,BufRead *.v,*.sv nnoremap <silent> <F1> :VerilogLineFormat<CR>
 "au BufNewFile,BufRead *.v,*.sv nnoremap <silent> <F2> :RegisterDescription<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"set status line
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L] 
+set laststatus=2
+
 "解决菜单乱码
 so $VIMRUNTIME/delmenu.vim
 set langmenu=none
 so $VIMRUNTIME/menu.vim
+
+
+"Left the setting in the end.
+set cursorline
+highlight CursorLine guibg=#353535 ctermbg=black
+set cursorcolumn
