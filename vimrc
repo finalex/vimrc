@@ -36,10 +36,17 @@ Plugin 'scrooloose/nerdcommenter'
 "vim-snipmate start -- conflict with YCM
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
+
+"==================================================
+"Two famous Snippet engine for use.
+"ultisnips is better, but requires python support in vim.
+"
+"Plugin 'garbas/vim-snipmate'
+Plugin 'SirVer/ultisnips'
 " Optional:
 Plugin 'honza/vim-snippets'
-"vim-snipmate end
+"==================================================
+
 " cyx
 Plugin 'finalex/vim_sv_helper'
 
@@ -144,7 +151,7 @@ else
 endif
 
 if has('win32')
-    set guifont=Source\ Code\ Pro:h10
+    set guifont=Source_Code_Variable:h11
 else
      set guifont=DejaVu\ Sans\ Mono\ 10
 endif
@@ -205,6 +212,11 @@ nmap ga <Plug>(EasyAlign)
 "Nerdcommenter
 "Add one space to comment
 let g:NERDSpaceDelims=1
+
+"UltiSnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 "cyx_defined
 "au BufNewFile,BufRead *.v,*.sv nnoremap <silent> <F1> :VerilogLineFormat<CR>
