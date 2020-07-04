@@ -4,77 +4,171 @@ set backspace=indent,eol,start
 
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-"set rtp+=$VIM/vimfiles/bundle/Vundle.vim/
-"call vundle#begin('$VIM/vimfiles/bundle/')
-set rtp+=$HOME/.vim/bundle/Vundle.vim/
-call vundle#begin('$HOME/.vim/bundle/')
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Specify a directory for plugins
+" " - For Neovim: stdpath('data') . '/plugged'
+" " - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
 
 "" plugin on GitHub repo
-Plugin 'altercation/vim-colors-solarized'
+Plug 'altercation/vim-colors-solarized'
 "Plugin 'nachumk/systemverilog.vim'
 "Plugin 'WeiChungWu/vim-SystemVerilog'
-Plugin 'vhda/verilog_systemverilog.vim'
-Plugin 'godlygeek/tabular'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'vim-scripts/VisIncr'  
-Plugin 'tsaleh/vim-align'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Yggdroot/LeaderF'
-Plugin 'lifepillar/vim-mucomplete'
-Plugin 'compnerd/arm64asm-vim'
-Plugin 'tpope/vim-surround'
-Plugin 'scrooloose/nerdcommenter'
+Plug 'vhda/verilog_systemverilog.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/vim-easy-align'
+Plug 'vim-scripts/VisIncr'  
+Plug 'tsaleh/vim-align'
+Plug 'scrooloose/nerdtree'
+Plug 'Yggdroot/LeaderF'
+"Plugin 'lifepillar/vim-mucomplete'
+Plug 'compnerd/arm64asm-vim'
+Plug 'tpope/vim-surround'
+Plug 'scrooloose/nerdcommenter'
+Plug 'vim-scripts/upf.vim'
+Plug 'kien/rainbow_parentheses.vim'
 "python
 " Plugin 'davidhalter/jedi-vim'
 "vim-snipmate start -- conflict with YCM
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'bling/vim-bufferline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'NLKNguyen/papercolor-theme'
 
+Plug 'easymotion/vim-easymotion'
+Plug 'terryma/vim-expand-region'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'terryma/vim-multiple-cursors'
+
+"==================================================
+"LSP
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
 "==================================================
 "Two famous Snippet engine for use.
 "ultisnips is better, but requires python support in vim.
 "
 "Plugin 'garbas/vim-snipmate'
-Plugin 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 " Optional:
-Plugin 'honza/vim-snippets'
+Plug 'honza/vim-snippets'
 "==================================================
 
 " cyx
-Plugin 'finalex/vim_sv_helper'
+Plug 'finalex/vim_sv_helper'
 
 
+"==================================================
+"backup region
+"
+"
 "Plugin 'vim-scripts/taglist.vim'
-Plugin 'kien/ctrlp.vim'
+"Plugin 'kien/ctrlp.vim'
 "Plugin 'Valloric/YouCompleteMe'
+"Plugin 'godlygeek/tabular'
+"==================================================
 
-"" plugin from http://vim-scripts.org/vim/scripts.html
-"" Plugin 'L9'
-Plugin 'L9'
-Plugin 'matchit.zip'
-Plugin 'bufexplorer.zip'
-Plugin 'FuzzyFinder'
-"" Git plugin not hosted on GitHub
-"Plugin 'git://git.wincent.com/command-t.git'
+call plug#end()
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
-"" The sparkup vim script is in a subdirectory of this repo called vim.
-"" Pass the path to set the runtimepath properly.
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-"" Install L9 and avoid a Naming conflict if you've already installed a
-"" different version somewhere else.
-"" Plugin 'ascenator/L9', {'name': 'newL9'}
+" " set the runtime path to include Vundle and initialize
+" "set rtp+=$VIM/vimfiles/bundle/Vundle.vim/
+" "call vundle#begin('$VIM/vimfiles/bundle/')
+" set rtp+=$HOME/.vim/bundle/Vundle.vim/
+" call vundle#begin('$HOME/.vim/bundle/')
+" " alternatively, pass a path where Vundle should install plugins
+" "call vundle#begin('~/some/path/here')
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
+" " let Vundle manage Vundle, required
+" Plugin 'VundleVim/Vundle.vim'
+
+" "" plugin on GitHub repo
+" Plugin 'altercation/vim-colors-solarized'
+" "Plugin 'nachumk/systemverilog.vim'
+" "Plugin 'WeiChungWu/vim-SystemVerilog'
+" Plugin 'vhda/verilog_systemverilog.vim'
+" Plugin 'jiangmiao/auto-pairs'
+" Plugin 'junegunn/vim-easy-align'
+" Plugin 'vim-scripts/VisIncr'  
+" Plugin 'tsaleh/vim-align'
+" Plugin 'scrooloose/nerdtree'
+" Plugin 'Yggdroot/LeaderF'
+" "Plugin 'lifepillar/vim-mucomplete'
+" Plugin 'compnerd/arm64asm-vim'
+" Plugin 'tpope/vim-surround'
+" Plugin 'scrooloose/nerdcommenter'
+" Plugin 'vim-scripts/upf.vim'
+" Plugin 'kien/rainbow_parentheses.vim'
+" "python
+" " Plugin 'davidhalter/jedi-vim'
+" "vim-snipmate start -- conflict with YCM
+" Plugin 'MarcWeber/vim-addon-mw-utils'
+" Plugin 'tomtom/tlib_vim'
+" Plugin 'bling/vim-bufferline'
+" Plugin 'vim-airline/vim-airline'
+" Plugin 'vim-airline/vim-airline-themes'
+" Plugin 'NLKNguyen/papercolor-theme'
+
+" Plugin 'easymotion/vim-easymotion'
+" Plugin 'terryma/vim-expand-region'
+" Plugin 'jlanzarotta/bufexplorer'
+" Plugin 'terryma/vim-multiple-cursors'
+" "==================================================
+" "LSP
+" Plugin 'prabirshrestha/vim-lsp'
+" Plugin 'mattn/vim-lsp-settings'
+
+" Plugin 'prabirshrestha/asyncomplete.vim'
+" Plugin 'prabirshrestha/asyncomplete-lsp.vim'
+" "==================================================
+" "Two famous Snippet engine for use.
+" "ultisnips is better, but requires python support in vim.
+" "
+" "Plugin 'garbas/vim-snipmate'
+" Plugin 'SirVer/ultisnips'
+" " Optional:
+" Plugin 'honza/vim-snippets'
+" "==================================================
+
+" " cyx
+" Plugin 'finalex/vim_sv_helper'
+
+
+" "==================================================
+" "backup region
+" "
+" "
+" "Plugin 'vim-scripts/taglist.vim'
+" "Plugin 'kien/ctrlp.vim'
+" "Plugin 'Valloric/YouCompleteMe'
+" "Plugin 'godlygeek/tabular'
+" "==================================================
+
+" "" plugin from http://vim-scripts.org/vim/scripts.html
+" "" Plugin 'L9'
+" Plugin 'L9'
+" Plugin 'matchit.zip'
+" Plugin 'bufexplorer.zip'
+" Plugin 'FuzzyFinder'
+" "" Git plugin not hosted on GitHub
+" "Plugin 'git://git.wincent.com/command-t.git'
+
+" "" git repos on your local machine (i.e. when working on your own plugin)
+" "Plugin 'file:///home/gmarik/path/to/plugin'
+" "" The sparkup vim script is in a subdirectory of this repo called vim.
+" "" Pass the path to set the runtimepath properly.
+" "Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" "" Install L9 and avoid a Naming conflict if you've already installed a
+" "" different version somewhere else.
+" "" Plugin 'ascenator/L9', {'name': 'newL9'}
+
+" " All of your Plugins must be added before the following line
+" call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
@@ -139,7 +233,6 @@ if has('gui_running')
     colo solarized
     "set background=light
     set background=dark
-
     set ruler
     set lines=40
     set columns=120
@@ -221,6 +314,17 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 "cyx_defined
 "au BufNewFile,BufRead *.v,*.sv nnoremap <silent> <F1> :VerilogLineFormat<CR>
 "au BufNewFile,BufRead *.v,*.sv nnoremap <silent> <F2> :RegisterDescription<CR>
+
+"RainbowParenteses
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+" asynccomplete
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "set status line
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L] 
