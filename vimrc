@@ -20,7 +20,13 @@ Plug 'junegunn/vim-easy-align'
 Plug 'vim-scripts/VisIncr'  
 Plug 'tsaleh/vim-align'
 Plug 'scrooloose/nerdtree'
-Plug 'Yggdroot/LeaderF'
+Plug 'liuchengxu/vim-clap'
+if has("python3")
+    Plug 'Yggdroot/LeaderF'
+else
+    Plug 'junegunn/fzf'
+endif
+Plug 'Yggdroot/indentLine'
 "Plugin 'lifepillar/vim-mucomplete'
 Plug 'compnerd/arm64asm-vim'
 Plug 'tpope/vim-surround'
@@ -312,8 +318,8 @@ let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 "cyx_defined
-"au BufNewFile,BufRead *.v,*.sv nnoremap <silent> <F1> :VerilogLineFormat<CR>
-"au BufNewFile,BufRead *.v,*.sv nnoremap <silent> <F2> :RegisterDescription<CR>
+au BufNewFile,BufRead *.v,*.sv nnoremap <silent> <leader>v :VerilogLineFormat<CR>
+au BufNewFile,BufRead *.v,*.sv nnoremap <silent> <F2> :RegisterDescription<CR>
 
 "RainbowParenteses
 au VimEnter * RainbowParenthesesToggle
@@ -325,6 +331,23 @@ au Syntax * RainbowParenthesesLoadBraces
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+
+" easymotion
+nmap t <Plug>(easymotion-t)
+nmap f <Plug>(easymotion-f)
+omap f <Plug>(easymotion-f)
+omap t <Plug>(easymotion-t)
+nmap T <Plug>(easymotion-T)
+nmap F <Plug>(easymotion-F)
+omap F <Plug>(easymotion-F)
+omap T <Plug>(easymotion-T)
+let g:EasyMotion_prompt = '{n}>>>'
+
+" indentLine
+let g:indentLine_enabled = 1
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "set status line
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L] 
