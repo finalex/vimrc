@@ -347,6 +347,9 @@ let g:EasyMotion_prompt = '{n}>>>'
 let g:indentLine_enabled = 1
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
+" systemverilog
+let g:verilog_disable_indent_lst = "module,eos"
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "set status line
