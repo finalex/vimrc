@@ -55,6 +55,9 @@ Plug 'mattn/vim-lsp-settings'
 
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
+Plug 'thomasfaingnaert/vim-lsp-snippets'
+Plug 'thomasfaingnaert/vim-lsp-ultisnips'
 "==================================================
 "Two famous Snippet engine for use.
 "ultisnips is better, but requires python support in vim.
@@ -63,6 +66,7 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'SirVer/ultisnips'
 " Optional:
 Plug 'honza/vim-snippets'
+
 "==================================================
 
 " cyx
@@ -81,101 +85,8 @@ Plug 'finalex/vim_sv_helper'
 
 call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" " set the runtime path to include Vundle and initialize
-" "set rtp+=$VIM/vimfiles/bundle/Vundle.vim/
-" "call vundle#begin('$VIM/vimfiles/bundle/')
-" set rtp+=$HOME/.vim/bundle/Vundle.vim/
-" call vundle#begin('$HOME/.vim/bundle/')
-" " alternatively, pass a path where Vundle should install plugins
-" "call vundle#begin('~/some/path/here')
-
-" " let Vundle manage Vundle, required
-" Plugin 'VundleVim/Vundle.vim'
-
-" "" plugin on GitHub repo
-" Plugin 'altercation/vim-colors-solarized'
-" "Plugin 'nachumk/systemverilog.vim'
-" "Plugin 'WeiChungWu/vim-SystemVerilog'
-" Plugin 'vhda/verilog_systemverilog.vim'
-" Plugin 'jiangmiao/auto-pairs'
-" Plugin 'junegunn/vim-easy-align'
-" Plugin 'vim-scripts/VisIncr'  
-" Plugin 'tsaleh/vim-align'
-" Plugin 'scrooloose/nerdtree'
-" Plugin 'Yggdroot/LeaderF'
-" "Plugin 'lifepillar/vim-mucomplete'
-" Plugin 'compnerd/arm64asm-vim'
-" Plugin 'tpope/vim-surround'
-" Plugin 'scrooloose/nerdcommenter'
-" Plugin 'vim-scripts/upf.vim'
-" Plugin 'kien/rainbow_parentheses.vim'
-" "python
-" " Plugin 'davidhalter/jedi-vim'
-" "vim-snipmate start -- conflict with YCM
-" Plugin 'MarcWeber/vim-addon-mw-utils'
-" Plugin 'tomtom/tlib_vim'
-" Plugin 'bling/vim-bufferline'
-" Plugin 'vim-airline/vim-airline'
-" Plugin 'vim-airline/vim-airline-themes'
-" Plugin 'NLKNguyen/papercolor-theme'
-
-" Plugin 'easymotion/vim-easymotion'
-" Plugin 'terryma/vim-expand-region'
-" Plugin 'jlanzarotta/bufexplorer'
-" Plugin 'terryma/vim-multiple-cursors'
-" "==================================================
-" "LSP
-" Plugin 'prabirshrestha/vim-lsp'
-" Plugin 'mattn/vim-lsp-settings'
-
-" Plugin 'prabirshrestha/asyncomplete.vim'
-" Plugin 'prabirshrestha/asyncomplete-lsp.vim'
-" "==================================================
-" "Two famous Snippet engine for use.
-" "ultisnips is better, but requires python support in vim.
-" "
-" "Plugin 'garbas/vim-snipmate'
-" Plugin 'SirVer/ultisnips'
-" " Optional:
-" Plugin 'honza/vim-snippets'
-" "==================================================
-
-" " cyx
-" Plugin 'finalex/vim_sv_helper'
-
-
-" "==================================================
-" "backup region
-" "
-" "
-" "Plugin 'vim-scripts/taglist.vim'
-" "Plugin 'kien/ctrlp.vim'
-" "Plugin 'Valloric/YouCompleteMe'
-" "Plugin 'godlygeek/tabular'
-" "==================================================
-
-" "" plugin from http://vim-scripts.org/vim/scripts.html
-" "" Plugin 'L9'
-" Plugin 'L9'
-" Plugin 'matchit.zip'
-" Plugin 'bufexplorer.zip'
-" Plugin 'FuzzyFinder'
-" "" Git plugin not hosted on GitHub
-" "Plugin 'git://git.wincent.com/command-t.git'
-
-" "" git repos on your local machine (i.e. when working on your own plugin)
-" "Plugin 'file:///home/gmarik/path/to/plugin'
-" "" The sparkup vim script is in a subdirectory of this repo called vim.
-" "" Pass the path to set the runtimepath properly.
-" "Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" "" Install L9 and avoid a Naming conflict if you've already installed a
-" "" different version somewhere else.
-" "" Plugin 'ascenator/L9', {'name': 'newL9'}
-
-" " All of your Plugins must be added before the following line
-" call vundle#end()            " required
 filetype plugin indent on    " required
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
@@ -280,6 +191,7 @@ noremap <leader>p "+p
 noremap <leader>P "+P
 
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>so :source $MYVIMRC<cr>
 
 "Search
 map <F4> [I:let nr = input("Input No. to jump:")<Bar>exe "normal " . nr ."[\t"<CR>
@@ -293,13 +205,13 @@ nnoremap <leader>ic <ESC><ESC>^i//<ESC><ESC>
 "plugin conf
 
 "mucomplete
-imap <c-k> <plug>(MUcompleteFwd)
-imap <c-q> <plug>(MUcompleteBwd)
+" imap <c-k> <plug>(MUcompleteFwd)
+" imap <c-q> <plug>(MUcompleteBwd)
 
 "tabular -- take care : need two \\
-au BufNewFile,BufRead *.v,*.vh,*.sv,*.svh vnoremap <leader>tp :Tabularize /\(input\\|output\)\s*\(\[.*\]\)\?<CR><ESC>
-au BufNewFile,BufRead *.v,*.vh,*.sv,*.svh vnoremap <leader>tw :Tabularize /\(logic\\|wire\\|reg\)\s*\(\[.*\]\)\?<CR><ESC>
-au BufNewFile,BufRead *.v,*.vh,*.sv,*.svh vnoremap <leader>ti :Tabularize /\(\.\w\+\zs\\|)\s*,\?\s*$\)<CR><ESC>
+" au BufNewFile,BufRead *.v,*.vh,*.sv,*.svh vnoremap <leader>tp :Tabularize /\(input\\|output\)\s*\(\[.*\]\)\?<CR><ESC>
+" au BufNewFile,BufRead *.v,*.vh,*.sv,*.svh vnoremap <leader>tw :Tabularize /\(logic\\|wire\\|reg\)\s*\(\[.*\]\)\?<CR><ESC>
+" au BufNewFile,BufRead *.v,*.vh,*.sv,*.svh vnoremap <leader>ti :Tabularize /\(\.\w\+\zs\\|)\s*,\?\s*$\)<CR><ESC>
 
 "NERDTreeToggle
 noremap <leader>s :NERDTreeToggle<CR>
@@ -350,6 +262,9 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 " systemverilog
 let g:verilog_disable_indent_lst = "module,eos"
 
+" vim expand region
+vmap v <Plug>(expand_region_expand)
+vmap V <Plug>(expand_region_shrink)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "set status line
